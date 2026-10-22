@@ -11000,7 +11000,7 @@ dtype: int64</pre>
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [146]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [169]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
 <div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
@@ -11014,7 +11014,7 @@ dtype: int64</pre>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[146]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[169]:</div>
 <div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
 <pre>ID  объявления                  0
 Количество комнат            1041
@@ -11036,7 +11036,7 @@ dtype: int64</pre>
 Дополнительно                 356
 Название ЖК                 17508
 Серия дома                  21184
-Высота потолков, м          12148
+Высота потолков, м              0
 Лифт                         5496
 Мусоропровод                10505
 Ссылка на объявление            0
@@ -11209,32 +11209,402 @@ dtype: int64</pre>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=67ff6ed9">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d046a141">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [150]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [158]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span>
-    <span class="s2">"../data_processed/real_estate_processed.csv"</span><span class="p">,</span>
-    <span class="n">index</span><span class="o">=</span><span class="kc">False</span>
-<span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">columns_to_check</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"Серия дома"</span><span class="p">,</span>
+    <span class="s2">"Название ЖК"</span><span class="p">,</span>
+    <span class="s2">"Парковка"</span><span class="p">,</span>
+    <span class="s2">"Высота потолков, м"</span><span class="p">,</span>
+    <span class="s2">"Мусоропровод"</span><span class="p">,</span>
+    <span class="s2">"Площадь комнат, м2"</span><span class="p">,</span>
+    <span class="s2">"Балкон"</span><span class="p">,</span>
+    <span class="s2">"Окна"</span><span class="p">,</span>
+    <span class="s2">"Можно с детьми/животными"</span><span class="p">,</span>
+    <span class="s2">"Лифт"</span><span class="p">,</span>
+    <span class="s2">"Ремонт"</span><span class="p">,</span>
+    <span class="s2">"Санузел"</span><span class="p">,</span>
+    <span class="s2">"Метро"</span><span class="p">,</span>
+    <span class="s2">"Количество комнат"</span><span class="p">,</span>
+    <span class="s2">"Дополнительно"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">columns_to_check</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"</span><span class="se">\n</span><span class="s2">--- </span><span class="si">{</span><span class="n">column</span><span class="si">}</span><span class="s2"> ---"</span><span class="p">)</span>
+    <span class="n">display</span><span class="p">(</span><span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=de581c88">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Серия дома ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Серия дома
+NaN                      21184
+индивидуальный проект      613
+Индивидуальный проект      138
+П44                         89
+П44Т                        63
+монолит                     38
+СЭМ-2                       32
+II-29                       29
+П-44                        23
+КОПЭ                        22
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Название ЖК ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Название ЖК
+NaN                       17508
+Символ, 2019                 61
+Водный, 2015                 45
+Квартал на Ленинском         37
+Метрополия, 2021             36
+Триумф-Палас, 2006           35
+Люблинский парк              33
+Октябрьское поле, 2021       28
+Триумф-Палас                 28
+Аэробус, 2008                26
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Парковка ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Парковка
+NaN               13405
+наземная           6042
+подземная          2761
+открытая           1017
+многоуровневая      118
+на крыше              1
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Высота потолков, м ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Высота потолков, м
+NaN     12148
+2.64     4467
+3.00     1317
+2.70     1040
+2.48      676
+3.20      615
+2.60      543
+2.80      531
+2.50      463
+2.75      221
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Мусоропровод ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Мусоропровод
+Да     10890
+NaN    10505
+Нет     1949
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Площадь комнат, м2 ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Площадь комнат, м2
+NaN      8898
+20       1620
+18        952
+19        765
+17        284
+16        266
+21        262
+18-14     261
+15        229
+18-12     224
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Балкон ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Балкон
+NaN                       7970
+Балкон (1)                7421
+Лоджия (1)                6004
+Балкон (1), Лоджия (1)     714
+Лоджия (2)                 568
+Балкон (2)                 474
+Балкон (3)                  54
+Лоджия (3)                  42
+Балкон (2), Лоджия (2)      25
+Балкон (1), Лоджия (2)      24
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Окна ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Окна
+Во двор            10863
+NaN                 6608
+На улицу и двор     3285
+На улицу            2588
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Можно с детьми/животными ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Можно с детьми/животными
+Можно с детьми                       10127
+Можно с детьми, Можно с животными     6886
+NaN                                   6092
+Можно с животными                      239
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Лифт ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Лифт
+Пасс (1)              5904
+NaN                   5496
+Пасс (2)              4325
+Пасс (1), Груз (1)    3957
+Пасс (2), Груз (1)    1220
+Пасс (2), Груз (2)     652
+Пасс (3)               636
+Пасс (4)               346
+Пасс (3), Груз (1)     187
+Пасс (1), Груз (2)     185
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Ремонт ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Ремонт
+Косметический    8498
+Евроремонт       8462
+Дизайнерский     3463
+NaN              2751
+Без ремонта       170
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Санузел ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Санузел
+Совмещенный (1)                    10078
+Раздельный (1)                      7158
+NaN                                 2670
+Совмещенный (2)                     1431
+Совмещенный (1), Раздельный (1)      810
+Раздельный (2)                       533
+Совмещенный (3)                      237
+Совмещенный (2), Раздельный (1)      187
+Совмещенный (4)                       72
+Раздельный (3)                        52
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Метро ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Метро
+NaN                                 1314
+м. Академическая (10 мин пешком)      41
+м. Водный стадион (5 мин пешком)      40
+м. Приморская (None мин пешком)       35
+м. Щелковская (15 мин пешком)         34
+м. Строгино (15 мин пешком)           33
+м. Римская (None мин пешком)          33
+м. Динамо (7 мин пешком)              33
+м. Кузьминки (10 мин пешком)          32
+м. Коломенская (15 мин пешком)        31
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Количество комнат ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Количество комнат
+1                   7917
+2, Изолированная    4623
+2                   2591
+3                   1715
+3, Изолированная    1583
+NaN                 1041
+3, Оба варианта      875
+4                    670
+2, Смежная           637
+2, Оба варианта      615
+Name: count, dtype: int64</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>
+--- Дополнительно ---
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Дополнительно
+Мебель в комнатах, Мебель на кухне, Ванна, Стиральная машина, Телевизор, Холодильник, Интернет                                                                2896
+Мебель в комнатах, Мебель на кухне, Ванна, Стиральная машина, Холодильник, Интернет                                                                           1318
+Мебель в комнатах, Мебель на кухне, Ванна, Стиральная машина, Кондиционер, Посудомоечная машина, Телевизор, Холодильник, Интернет                             1042
+Мебель в комнатах, Мебель на кухне, Ванна, Стиральная машина, Кондиционер, Телевизор, Холодильник, Интернет                                                    967
+Мебель в комнатах, Мебель на кухне, Ванна, Стиральная машина, Телевизор, Холодильник, Интернет, Телефон                                                        887
+Мебель в комнатах, Мебель на кухне, Стиральная машина, Холодильник                                                                                             868
+Мебель в комнатах, Мебель на кухне, Ванна, Душевая кабина, Стиральная машина, Кондиционер, Посудомоечная машина, Телевизор, Холодильник, Интернет, Телефон     768
+Мебель в комнатах, Мебель на кухне, Ванна, Душевая кабина, Стиральная машина, Кондиционер, Посудомоечная машина, Телевизор, Холодильник, Интернет              725
+Мебель в комнатах, Мебель на кухне, Ванна, Стиральная машина, Телевизор, Холодильник                                                                           644
+Мебель в комнатах, Мебель на кухне, Ванна, Стиральная машина, Кондиционер, Посудомоечная машина, Телевизор, Холодильник, Интернет, Телефон                     602
+Name: count, dtype: int64</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=746d33e8">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [151]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [159]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data_processed/real_estate_processed.csv"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -11245,7 +11615,350 @@ dtype: int64</pre>
 </div>
 <div class="jp-OutputArea jp-Cell-outputArea">
 <div class="jp-OutputArea-child jp-OutputArea-executeResult">
-<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[151]:</div>
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[159]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>count    11196.000000
+mean         2.983292
+std          7.618112
+min          1.200000
+25%          2.640000
+50%          2.640000
+75%          2.800000
+max        320.000000
+Name: Высота потолков, м, dtype: float64</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=5e444069">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [160]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="p">[</span><span class="s2">"ID  объявления"</span><span class="p">,</span> <span class="s2">"Адрес"</span><span class="p">,</span> <span class="s2">"Высота потолков, м"</span><span class="p">]</span>
+<span class="p">]</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span>
+    <span class="s2">"Высота потолков, м"</span><span class="p">,</span>
+    <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[160]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>ID  объявления</th>
+<th>Адрес</th>
+<th>Высота потолков, м</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>11189</th>
+<td>274140593</td>
+<td>Москва, Профсоюзная улица, 7/12</td>
+<td>320.0</td>
+</tr>
+<tr>
+<th>8625</th>
+<td>272179535</td>
+<td>Москва, Мясницкая улица, 21/8с8</td>
+<td>320.0</td>
+</tr>
+<tr>
+<th>9</th>
+<td>272900409</td>
+<td>Москва, улица Арбат, 30/3С1</td>
+<td>310.0</td>
+</tr>
+<tr>
+<th>17134</th>
+<td>274849798</td>
+<td>Москва, Нижегородская улица, 86кБ</td>
+<td>280.0</td>
+</tr>
+<tr>
+<th>9280</th>
+<td>274998351</td>
+<td>Москва, Болотниковская улица, 30</td>
+<td>265.0</td>
+</tr>
+<tr>
+<th>12636</th>
+<td>274906525</td>
+<td>Москва, улица 1812 года, 8К2</td>
+<td>264.0</td>
+</tr>
+<tr>
+<th>3759</th>
+<td>274982211</td>
+<td>Москва, Борисовский проезд, 8К2</td>
+<td>264.0</td>
+</tr>
+<tr>
+<th>247</th>
+<td>271203810</td>
+<td>Москва, Долгопрудная аллея, 14к1, ш. Дмитровск...</td>
+<td>260.0</td>
+</tr>
+<tr>
+<th>8832</th>
+<td>232362985</td>
+<td>Москва, улица Винокурова, 22К2</td>
+<td>28.0</td>
+</tr>
+<tr>
+<th>2969</th>
+<td>274867097</td>
+<td>Москва, Каширский проезд, 25к1</td>
+<td>28.0</td>
+</tr>
+<tr>
+<th>21584</th>
+<td>265857148</td>
+<td>Москва, улица Коминтерна, 15</td>
+<td>28.0</td>
+</tr>
+<tr>
+<th>11123</th>
+<td>271267183</td>
+<td>Москва, Ленинский проспект, 95Б</td>
+<td>27.0</td>
+</tr>
+<tr>
+<th>4072</th>
+<td>252733003</td>
+<td>Москва, Полярная улица, 27к4</td>
+<td>27.0</td>
+</tr>
+<tr>
+<th>8382</th>
+<td>166609594</td>
+<td>Москва, Балаклавский проспект, 10К3</td>
+<td>27.0</td>
+</tr>
+<tr>
+<th>22070</th>
+<td>273432181</td>
+<td>Москва, Автозаводская улица, 23С120</td>
+<td>27.0</td>
+</tr>
+<tr>
+<th>7423</th>
+<td>274946733</td>
+<td>Москва, Варшавское шоссе, 49к1</td>
+<td>26.0</td>
+</tr>
+<tr>
+<th>15769</th>
+<td>219565783</td>
+<td>Москва, Кременчугская улица, 40К1</td>
+<td>25.0</td>
+</tr>
+<tr>
+<th>6616</th>
+<td>274903162</td>
+<td>Москва, Красноказарменная улица, 14Ак1</td>
+<td>12.8</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=75f04aa6">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [161]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">,</span>
+    <span class="s2">"Высота потолков, м"</span>
+<span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">nan</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a6e7a12d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [164]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[164]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>np.float64(2.64)</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=51b0fc2c">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [163]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ceiling_median</span> <span class="o">=</span> <span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=a01752d7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [165]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">ceiling_median</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[165]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>0        3.00
+1        3.50
+2        3.20
+3        3.20
+4        3.90
+         ... 
+23363    2.64
+23364    2.64
+23365    2.64
+23366    2.65
+23367    2.64
+Name: Высота потолков, м, Length: 23344, dtype: float64</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a86a8e24">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [166]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">ceiling_median</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=21661061">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [175]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Медиана высоты потолков:"</span><span class="p">,</span> <span class="n">ceiling_median</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Количество пропусков:"</span><span class="p">,</span> <span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Максимальная высота:"</span><span class="p">,</span> <span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span><span class="o">.</span><span class="n">max</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Минимальная высота:"</span><span class="p">,</span> <span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Медиана высоты потолков: 2.64
+Количество пропусков: 0
+Максимальная высота: 9.0
+
+Минимальная высота: 1.2
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1c1612bd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [174]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"Высота потолков, м"</span><span class="p">]</span> <span class="o">==</span> <span class="mf">1.2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[174]:</div>
 <div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
 <div>
 <style scoped="">
@@ -11290,302 +12003,585 @@ dtype: int64</pre>
 </thead>
 <tbody>
 <tr>
-<th>0</th>
-<td>271271157</td>
-<td>4</td>
+<th>22265</th>
+<td>274439221</td>
+<td>3</td>
 <td>Квартира</td>
-<td>м. Смоленская (9 мин пешком)</td>
-<td>Москва, улица Новый Арбат, 27</td>
-<td>200.0/20.0</td>
-<td>5/16, Монолитный</td>
-<td>подземная</td>
-<td>500000.0 руб./ За месяц, Залог - 500000 руб., ...</td>
-<td>+79166369231</td>
-<td>...</td>
-<td>Новый Арбат, 2010</td>
+<td>м. Менделеевская (15 мин пешком)</td>
+<td>Москва, Октябрьский переулок, 9</td>
+<td>116.0/30.0</td>
+<td>3/13, Монолитный</td>
 <td>NaN</td>
-<td>3.00</td>
-<td>Пасс (4), Груз (1)</td>
-<td>Да</td>
-<td>https://www.cian.ru/rent/flat/271271157</td>
-<td>руб.</td>
-<td>500000.0</td>
-<td>200.0</td>
-<td>2500.00</td>
-</tr>
-<tr>
-<th>1</th>
-<td>271634126</td>
-<td>4</td>
-<td>Квартира</td>
-<td>м. Смоленская (8 мин пешком)</td>
-<td>Москва, улица Новый Арбат, 27</td>
-<td>198.0/95.0/18.0</td>
-<td>5/16, Монолитно-кирпичный</td>
-<td>подземная</td>
-<td>500000.0 руб./ За месяц, Залог - 500000 руб., ...</td>
-<td>+79850608590</td>
+<td>165000.0 руб./ За месяц, Залог - 165000 руб., ...</td>
+<td>+79651152129, +79623678610</td>
 <td>...</td>
-<td>Новый Арбат</td>
 <td>NaN</td>
-<td>3.50</td>
-<td>Пасс (1), Груз (1)</td>
-<td>Нет</td>
-<td>https://www.cian.ru/rent/flat/271634126</td>
-<td>руб.</td>
-<td>500000.0</td>
-<td>198.0</td>
-<td>2525.25</td>
-</tr>
-<tr>
-<th>2</th>
-<td>271173086</td>
-<td>4, Оба варианта</td>
-<td>Квартира</td>
-<td>м. Смоленская (7 мин пешком)</td>
-<td>Москва, улица Новый Арбат, 27</td>
-<td>200.0/116.0/4.0</td>
-<td>5/16</td>
-<td>подземная</td>
-<td>500000.0 руб./ За месяц, Залог - 500000 руб., ...</td>
-<td>+79672086536, +79099269384</td>
-<td>...</td>
-<td>Новый Арбат</td>
 <td>NaN</td>
-<td>3.20</td>
+<td>1.2</td>
 <td>Пасс (1)</td>
 <td>NaN</td>
-<td>https://www.cian.ru/rent/flat/271173086</td>
+<td>https://www.cian.ru/rent/flat/274439221</td>
 <td>руб.</td>
-<td>500000.0</td>
-<td>200.0</td>
-<td>2500.00</td>
-</tr>
-<tr>
-<th>3</th>
-<td>272197456</td>
-<td>4, Оба варианта</td>
-<td>Квартира</td>
-<td>м. Смоленская (3 мин пешком)</td>
-<td>Москва, переулок Плотников, 21С1</td>
-<td>170.0/95.0/17.0</td>
-<td>5/6</td>
-<td>подземная</td>
-<td>400000.0 руб./ За месяц, Залог - 400000 руб., ...</td>
-<td>+79660342340, +79099269384</td>
-<td>...</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>3.20</td>
-<td>Пасс (1)</td>
-<td>NaN</td>
-<td>https://www.cian.ru/rent/flat/272197456</td>
-<td>руб.</td>
-<td>400000.0</td>
-<td>170.0</td>
-<td>2352.94</td>
-</tr>
-<tr>
-<th>4</th>
-<td>273614615</td>
-<td>2</td>
-<td>Квартира</td>
-<td>м. Арбатская (7 мин пешком)</td>
-<td>Москва, улица Новый Арбат, 15</td>
-<td>58.0/38.0/5.0</td>
-<td>12/26, Панельный</td>
-<td>NaN</td>
-<td>225000.0 руб./ За месяц, Залог - 225000 руб., ...</td>
-<td>+79852432860</td>
-<td>...</td>
-<td>The Book</td>
-<td>NaN</td>
-<td>3.90</td>
-<td>Пасс (1), Груз (1)</td>
-<td>Да</td>
-<td>https://www.cian.ru/rent/flat/273614615</td>
-<td>руб.</td>
-<td>225000.0</td>
-<td>58.0</td>
-<td>3879.31</td>
-</tr>
-<tr>
-<th>...</th>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-<td>...</td>
-</tr>
-<tr>
-<th>23339</th>
-<td>215565511</td>
-<td>NaN</td>
-<td>Квартира</td>
-<td>м. Говорово (8 мин пешком)</td>
-<td>Москва, Боровское шоссе, 2к7, ш. Боровское (3 ...</td>
-<td>35.0/16.4/8.0</td>
-<td>10/14</td>
-<td>NaN</td>
-<td>42000.0 руб./ За месяц, Залог - 42000 руб., Ко...</td>
-<td>+79154383401</td>
-<td>...</td>
-<td>Мещерский лес</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>Пасс (1), Груз (1)</td>
-<td>NaN</td>
-<td>https://www.cian.ru/rent/flat/215565511</td>
-<td>руб.</td>
-<td>42000.0</td>
-<td>35.0</td>
-<td>1200.00</td>
-</tr>
-<tr>
-<th>23340</th>
-<td>274654844</td>
-<td>1</td>
-<td>Квартира</td>
-<td>м. Солнцево (7 мин пешком)</td>
-<td>Москва, Производственная улица, 8к1, ш. Боровс...</td>
-<td>38.7/16.5/11.0</td>
-<td>5/18, Монолитный</td>
-<td>NaN</td>
-<td>45000.0 руб./ За месяц, Залог - 45000 руб., Ко...</td>
-<td>+79151173402</td>
-<td>...</td>
-<td>Лучи</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>Пасс (1), Груз (1)</td>
-<td>NaN</td>
-<td>https://www.cian.ru/rent/flat/274654844</td>
-<td>руб.</td>
-<td>45000.0</td>
-<td>38.7</td>
-<td>1162.79</td>
-</tr>
-<tr>
-<th>23341</th>
-<td>268679909</td>
-<td>2, Оба варианта</td>
-<td>Квартира</td>
-<td>м. Солнцево (6 мин пешком)</td>
-<td>Москва, Боровский проезд, 11</td>
-<td>43.1</td>
-<td>5/5, Кирпичный</td>
-<td>NaN</td>
-<td>50000.0 руб./ За месяц, Залог - 50000 руб., Ко...</td>
-<td>+79653825192</td>
-<td>...</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>https://www.cian.ru/rent/flat/268679909</td>
-<td>руб.</td>
-<td>50000.0</td>
-<td>43.1</td>
-<td>1160.09</td>
-</tr>
-<tr>
-<th>23342</th>
-<td>274807525</td>
-<td>2</td>
-<td>Квартира</td>
-<td>м. Солнцево (11 мин пешком)</td>
-<td>Москва, улица Богданова, 6к1, ш. Боровское (3 ...</td>
-<td>52.5/10.0</td>
-<td>8/23, Монолитный</td>
-<td>наземная</td>
-<td>55000.0 руб./ За месяц, Залог - 50000 руб., Ко...</td>
-<td>+79660611965</td>
-<td>...</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>2.65</td>
-<td>Пасс (3)</td>
-<td>Да</td>
-<td>https://www.cian.ru/rent/flat/274807525</td>
-<td>руб.</td>
-<td>55000.0</td>
-<td>52.5</td>
-<td>1047.62</td>
-</tr>
-<tr>
-<th>23343</th>
-<td>274672243</td>
-<td>2, Оба варианта</td>
-<td>Квартира</td>
-<td>м. Говорово (10 мин пешком)</td>
-<td>Москва, улица Богданова, 2к1, ш. Боровское (3 ...</td>
-<td>90.0/48.2/15.5</td>
-<td>6/23, Панельный</td>
-<td>NaN</td>
-<td>57000.0 руб./ За месяц, Залог - 60000 руб., Ко...</td>
-<td>+79623641533</td>
-<td>...</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>NaN</td>
-<td>Пасс (3)</td>
-<td>Да</td>
-<td>https://www.cian.ru/rent/flat/274672243</td>
-<td>руб.</td>
-<td>57000.0</td>
-<td>90.0</td>
-<td>633.33</td>
+<td>165000.0</td>
+<td>116.0</td>
+<td>1422.41</td>
 </tr>
 </tbody>
 </table>
-<p>23344 rows × 28 columns</p>
+<p>1 rows × 28 columns</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=6b005b1d">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=581d2b2c">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [154]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [176]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_check</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data_processed/real_estate_processed.csv"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span>
+    <span class="s2">"Столбец"</span><span class="p">:</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">columns</span><span class="p">,</span>
+    <span class="s2">"Тип данных"</span><span class="p">:</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">dtypes</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">str</span><span class="p">)</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="s2">"Пропуски"</span><span class="p">:</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">values</span><span class="p">,</span>
+    <span class="s2">"Уникальных значений"</span><span class="p">:</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">nunique</span><span class="p">()</span><span class="o">.</span><span class="n">values</span>
+<span class="p">}))</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=6056ac46">
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Столбец</th>
+<th>Тип данных</th>
+<th>Пропуски</th>
+<th>Уникальных значений</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>ID  объявления</td>
+<td>int64</td>
+<td>0</td>
+<td>23344</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Количество комнат</td>
+<td>str</td>
+<td>1041</td>
+<td>24</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Тип</td>
+<td>str</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Метро</td>
+<td>str</td>
+<td>1314</td>
+<td>5864</td>
+</tr>
+<tr>
+<th>4</th>
+<td>Адрес</td>
+<td>str</td>
+<td>0</td>
+<td>12848</td>
+</tr>
+<tr>
+<th>5</th>
+<td>Площадь, м2</td>
+<td>str</td>
+<td>0</td>
+<td>11237</td>
+</tr>
+<tr>
+<th>6</th>
+<td>Дом</td>
+<td>str</td>
+<td>0</td>
+<td>2564</td>
+</tr>
+<tr>
+<th>7</th>
+<td>Парковка</td>
+<td>str</td>
+<td>13405</td>
+<td>5</td>
+</tr>
+<tr>
+<th>8</th>
+<td>Цена</td>
+<td>str</td>
+<td>0</td>
+<td>3904</td>
+</tr>
+<tr>
+<th>9</th>
+<td>Телефоны</td>
+<td>str</td>
+<td>0</td>
+<td>13166</td>
+</tr>
+<tr>
+<th>10</th>
+<td>Описание</td>
+<td>str</td>
+<td>0</td>
+<td>23054</td>
+</tr>
+<tr>
+<th>11</th>
+<td>Ремонт</td>
+<td>str</td>
+<td>2751</td>
+<td>4</td>
+</tr>
+<tr>
+<th>12</th>
+<td>Площадь комнат, м2</td>
+<td>str</td>
+<td>8898</td>
+<td>3980</td>
+</tr>
+<tr>
+<th>13</th>
+<td>Балкон</td>
+<td>str</td>
+<td>7970</td>
+<td>18</td>
+</tr>
+<tr>
+<th>14</th>
+<td>Окна</td>
+<td>str</td>
+<td>6608</td>
+<td>3</td>
+</tr>
+<tr>
+<th>15</th>
+<td>Санузел</td>
+<td>str</td>
+<td>2670</td>
+<td>20</td>
+</tr>
+<tr>
+<th>16</th>
+<td>Можно с детьми/животными</td>
+<td>str</td>
+<td>6092</td>
+<td>3</td>
+</tr>
+<tr>
+<th>17</th>
+<td>Дополнительно</td>
+<td>str</td>
+<td>356</td>
+<td>527</td>
+</tr>
+<tr>
+<th>18</th>
+<td>Название ЖК</td>
+<td>str</td>
+<td>17508</td>
+<td>1797</td>
+</tr>
+<tr>
+<th>19</th>
+<td>Серия дома</td>
+<td>str</td>
+<td>21184</td>
+<td>393</td>
+</tr>
+<tr>
+<th>20</th>
+<td>Высота потолков, м</td>
+<td>float64</td>
+<td>0</td>
+<td>84</td>
+</tr>
+<tr>
+<th>21</th>
+<td>Лифт</td>
+<td>str</td>
+<td>5496</td>
+<td>34</td>
+</tr>
+<tr>
+<th>22</th>
+<td>Мусоропровод</td>
+<td>str</td>
+<td>10505</td>
+<td>2</td>
+</tr>
+<tr>
+<th>23</th>
+<td>Ссылка на объявление</td>
+<td>str</td>
+<td>0</td>
+<td>23344</td>
+</tr>
+<tr>
+<th>24</th>
+<td>Валюта</td>
+<td>str</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>25</th>
+<td>Цена числом</td>
+<td>float64</td>
+<td>0</td>
+<td>593</td>
+</tr>
+<tr>
+<th>26</th>
+<td>Общая площадь</td>
+<td>float64</td>
+<td>0</td>
+<td>1009</td>
+</tr>
+<tr>
+<th>27</th>
+<td>Цена за м²</td>
+<td>float64</td>
+<td>0</td>
+<td>4648</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1fe310e4">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
 <div class="jp-InputArea jp-Cell-inputArea">
-<div class="jp-InputPrompt jp-InputArea-prompt">In [155]:</div>
+<div class="jp-InputPrompt jp-InputArea-prompt">In [177]:</div>
 <div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
 <div class="cm-editor cm-s-jupyter">
-<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Размер сохранённого файла:"</span><span class="p">,</span> <span class="n">df_check</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Количество дубликатов:"</span><span class="p">,</span> <span class="n">df_check</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">"Количество пропусков в цене за м²:"</span><span class="p">,</span> <span class="n">df_check</span><span class="p">[</span><span class="s2">"Цена за м²"</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"Количество комнат"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[177]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>Количество комнат
+1                   7917
+2, Изолированная    4623
+2                   2591
+3                   1715
+3, Изолированная    1583
+NaN                 1041
+3, Оба варианта      875
+4                    670
+2, Смежная           637
+2, Оба варианта      615
+4, Оба варианта      252
+5                    229
+4, Изолированная     223
+3, Смежная            87
+6                     80
+5, Оба варианта       79
+5, Изолированная      47
+6, Оба варианта       30
+6, Изолированная      16
+4, Смежная            13
+1, Изолированная       8
+1, Оба варианта        4
+5, Смежная             4
+6, Смежная             3
+1, Смежная             2
+Name: count, dtype: int64</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fba65b3f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [178]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[[</span><span class="s2">"Количество комнат"</span><span class="p">]]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[178]:</div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Количество комнат</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>13551</th>
+<td>NaN</td>
+</tr>
+<tr>
+<th>7812</th>
+<td>2, Изолированная</td>
+</tr>
+<tr>
+<th>20768</th>
+<td>2, Изолированная</td>
+</tr>
+<tr>
+<th>13366</th>
+<td>2, Изолированная</td>
+</tr>
+<tr>
+<th>12848</th>
+<td>3</td>
+</tr>
+<tr>
+<th>247</th>
+<td>1</td>
+</tr>
+<tr>
+<th>9440</th>
+<td>3, Изолированная</td>
+</tr>
+<tr>
+<th>2710</th>
+<td>2, Оба варианта</td>
+</tr>
+<tr>
+<th>3444</th>
+<td>2</td>
+</tr>
+<tr>
+<th>3429</th>
+<td>3</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8a93da13">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [180]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"rooms"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"Количество комнат"</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"^(\d+)"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_rub</span><span class="p">[</span><span class="s2">"room_layout"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"Количество комнат"</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">",\s*(.+)$"</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=93c54b59">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [181]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span>
+        <span class="p">[</span><span class="s2">"Количество комнат"</span><span class="p">,</span> <span class="s2">"rooms"</span><span class="p">,</span> <span class="s2">"room_layout"</span><span class="p">]</span>
+    <span class="p">]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>Количество комнат</th>
+<th>rooms</th>
+<th>room_layout</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>13551</th>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>7812</th>
+<td>2, Изолированная</td>
+<td>2.0</td>
+<td>Изолированная</td>
+</tr>
+<tr>
+<th>20768</th>
+<td>2, Изолированная</td>
+<td>2.0</td>
+<td>Изолированная</td>
+</tr>
+<tr>
+<th>13366</th>
+<td>2, Изолированная</td>
+<td>2.0</td>
+<td>Изолированная</td>
+</tr>
+<tr>
+<th>12848</th>
+<td>3</td>
+<td>3.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>247</th>
+<td>1</td>
+<td>1.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>9440</th>
+<td>3, Изолированная</td>
+<td>3.0</td>
+<td>Изолированная</td>
+</tr>
+<tr>
+<th>2710</th>
+<td>2, Оба варианта</td>
+<td>2.0</td>
+<td>Оба варианта</td>
+</tr>
+<tr>
+<th>3444</th>
+<td>2</td>
+<td>2.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>3429</th>
+<td>3</td>
+<td>3.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=38c1c0ee">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [182]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Пропуски в rooms:"</span><span class="p">,</span> <span class="n">df_rub</span><span class="p">[</span><span class="s2">"rooms"</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Пропуски в room_layout:"</span><span class="p">,</span> <span class="n">df_rub</span><span class="p">[</span><span class="s2">"room_layout"</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="se">\n</span><span class="s2">Варианты планировки:"</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"room_layout"</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">dropna</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -11598,15 +12594,1345 @@ dtype: int64</pre>
 <div class="jp-OutputArea-child">
 <div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
 <div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
-<pre>Размер сохранённого файла: (23344, 28)
-Количество дубликатов: 0
-Количество пропусков в цене за м²: 0
+<pre>Пропуски в rooms: 1041
+Пропуски в room_layout: 14243
+
+Варианты планировки:
+</pre>
+</div>
+</div>
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>room_layout
+NaN              14243
+Изолированная     6500
+Оба варианта      1855
+Смежная            746
+Name: count, dtype: int64</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=60191891">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [183]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=dec558c8">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [184]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="p">[</span><span class="s2">"object"</span><span class="p">,</span> <span class="s2">"str"</span><span class="p">])</span><span class="o">.</span><span class="n">columns</span><span class="p">:</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">"unknown"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=2a52e0da">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [185]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Всего пропусков:"</span><span class="p">,</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Всего пропусков: 0
 </pre>
 </div>
 </div>
 </div>
 </div>
-</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=db9cb5f2">
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=4427bbd7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [188]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span> <span class="o">=</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span>
+    <span class="s2">"ID  объявления"</span><span class="p">:</span> <span class="s2">"id"</span><span class="p">,</span>
+    <span class="s2">"Количество комнат"</span><span class="p">:</span> <span class="s2">"rooms_original"</span><span class="p">,</span>
+    <span class="s2">"Тип"</span><span class="p">:</span> <span class="s2">"property_type"</span><span class="p">,</span>
+    <span class="s2">"Метро"</span><span class="p">:</span> <span class="s2">"metro"</span><span class="p">,</span>
+    <span class="s2">"Адрес"</span><span class="p">:</span> <span class="s2">"address"</span><span class="p">,</span>
+    <span class="s2">"Площадь, м2"</span><span class="p">:</span> <span class="s2">"area_original"</span><span class="p">,</span>
+    <span class="s2">"Дом"</span><span class="p">:</span> <span class="s2">"building"</span><span class="p">,</span>
+    <span class="s2">"Парковка"</span><span class="p">:</span> <span class="s2">"parking"</span><span class="p">,</span>
+    <span class="s2">"Цена"</span><span class="p">:</span> <span class="s2">"price_original"</span><span class="p">,</span>
+    <span class="s2">"Телефоны"</span><span class="p">:</span> <span class="s2">"phones"</span><span class="p">,</span>
+    <span class="s2">"Описание"</span><span class="p">:</span> <span class="s2">"description"</span><span class="p">,</span>
+    <span class="s2">"Ремонт"</span><span class="p">:</span> <span class="s2">"renovation"</span><span class="p">,</span>
+    <span class="s2">"Площадь комнат, м2"</span><span class="p">:</span> <span class="s2">"room_area"</span><span class="p">,</span>
+    <span class="s2">"Балкон"</span><span class="p">:</span> <span class="s2">"balcony"</span><span class="p">,</span>
+    <span class="s2">"Окна"</span><span class="p">:</span> <span class="s2">"windows"</span><span class="p">,</span>
+    <span class="s2">"Санузел"</span><span class="p">:</span> <span class="s2">"bathroom"</span><span class="p">,</span>
+    <span class="s2">"Можно с детьми/животными"</span><span class="p">:</span> <span class="s2">"pets_children_allowed"</span><span class="p">,</span>
+    <span class="s2">"Дополнительно"</span><span class="p">:</span> <span class="s2">"amenities"</span><span class="p">,</span>
+    <span class="s2">"Название ЖК"</span><span class="p">:</span> <span class="s2">"residential_complex"</span><span class="p">,</span>
+    <span class="s2">"Серия дома"</span><span class="p">:</span> <span class="s2">"building_series"</span><span class="p">,</span>
+    <span class="s2">"Высота потолков, м"</span><span class="p">:</span> <span class="s2">"ceiling_height"</span><span class="p">,</span>
+    <span class="s2">"Лифт"</span><span class="p">:</span> <span class="s2">"elevator"</span><span class="p">,</span>
+    <span class="s2">"Мусоропровод"</span><span class="p">:</span> <span class="s2">"garbage_chute"</span><span class="p">,</span>
+    <span class="s2">"Ссылка на объявление"</span><span class="p">:</span> <span class="s2">"listing_url"</span><span class="p">,</span>
+    <span class="s2">"Валюта"</span><span class="p">:</span> <span class="s2">"currency"</span><span class="p">,</span>
+    <span class="s2">"Цена числом"</span><span class="p">:</span> <span class="s2">"price"</span><span class="p">,</span>
+    <span class="s2">"Общая площадь"</span><span class="p">:</span> <span class="s2">"total_area"</span><span class="p">,</span>
+    <span class="s2">"Цена за м²"</span><span class="p">:</span> <span class="s2">"price_per_sqm"</span><span class="p">,</span>
+    <span class="s2">"rooms"</span><span class="p">:</span> <span class="s2">"rooms"</span><span class="p">,</span>
+    <span class="s2">"room_layout"</span><span class="p">:</span> <span class="s2">"room_layout"</span>
+<span class="p">})</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">df_rub</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>['id', 'rooms_original', 'property_type', 'metro', 'address', 'area_original', 'building', 'parking', 'price_original', 'phones', 'description', 'renovation', 'room_area', 'balcony', 'windows', 'bathroom', 'pets_children_allowed', 'amenities', 'residential_complex', 'building_series', 'ceiling_height', 'elevator', 'garbage_chute', 'listing_url', 'currency', 'price', 'total_area', 'price_per_sqm', 'rooms', 'room_layout']
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=3085161d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [189]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"metro_station"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"metro"</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"м\.\s*(.*?)\s*\("</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="p">)</span>
+
+<span class="n">df_rub</span><span class="p">[</span><span class="s2">"metro_walk_minutes"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"metro"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"\((\d+)\s*мин пешком\)"</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d6dc7779">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [190]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df_rub</span><span class="p">[[</span><span class="s2">"metro"</span><span class="p">,</span> <span class="s2">"metro_station"</span><span class="p">,</span> <span class="s2">"metro_walk_minutes"</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>metro</th>
+<th>metro_station</th>
+<th>metro_walk_minutes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>м. Смоленская (9 мин пешком)</td>
+<td>Смоленская</td>
+<td>9.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>м. Смоленская (8 мин пешком)</td>
+<td>Смоленская</td>
+<td>8.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>м. Смоленская (7 мин пешком)</td>
+<td>Смоленская</td>
+<td>7.0</td>
+</tr>
+<tr>
+<th>3</th>
+<td>м. Смоленская (3 мин пешком)</td>
+<td>Смоленская</td>
+<td>3.0</td>
+</tr>
+<tr>
+<th>4</th>
+<td>м. Арбатская (7 мин пешком)</td>
+<td>Арбатская</td>
+<td>7.0</td>
+</tr>
+<tr>
+<th>5</th>
+<td>м. Смоленская (5 мин пешком)</td>
+<td>Смоленская</td>
+<td>5.0</td>
+</tr>
+<tr>
+<th>6</th>
+<td>м. Арбатская (4 мин пешком)</td>
+<td>Арбатская</td>
+<td>4.0</td>
+</tr>
+<tr>
+<th>7</th>
+<td>м. Смоленская (3 мин пешком)</td>
+<td>Смоленская</td>
+<td>3.0</td>
+</tr>
+<tr>
+<th>8</th>
+<td>м. Смоленская (9 мин пешком)</td>
+<td>Смоленская</td>
+<td>9.0</td>
+</tr>
+<tr>
+<th>9</th>
+<td>м. Арбатская (10 мин пешком)</td>
+<td>Арбатская</td>
+<td>10.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=81630214">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [196]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"floor"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"building"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"(\d+)\s*/"</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span>
+<span class="p">)</span>
+
+<span class="n">df_rub</span><span class="p">[</span><span class="s2">"total_floors"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"building"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"/\s*(\d+)"</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_rub</span><span class="p">[[</span><span class="s2">"building"</span><span class="p">,</span> <span class="s2">"floor"</span><span class="p">,</span> <span class="s2">"total_floors"</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>building</th>
+<th>floor</th>
+<th>total_floors</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>5/16, Монолитный</td>
+<td>5</td>
+<td>16</td>
+</tr>
+<tr>
+<th>1</th>
+<td>5/16, Монолитно-кирпичный</td>
+<td>5</td>
+<td>16</td>
+</tr>
+<tr>
+<th>2</th>
+<td>5/16</td>
+<td>5</td>
+<td>16</td>
+</tr>
+<tr>
+<th>3</th>
+<td>5/6</td>
+<td>5</td>
+<td>6</td>
+</tr>
+<tr>
+<th>4</th>
+<td>12/26, Панельный</td>
+<td>12</td>
+<td>26</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=7a7b4e37">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [197]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"passenger_elevators"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"elevator"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Пасс\s*\((\d+)\)"</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span>
+<span class="p">)</span>
+
+<span class="n">df_rub</span><span class="p">[</span><span class="s2">"freight_elevators"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"elevator"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Груз\s*\((\d+)\)"</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span>
+<span class="p">)</span>
+
+<span class="n">display</span><span class="p">(</span><span class="n">df_rub</span><span class="p">[[</span><span class="s2">"elevator"</span><span class="p">,</span> <span class="s2">"passenger_elevators"</span><span class="p">,</span> <span class="s2">"freight_elevators"</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>elevator</th>
+<th>passenger_elevators</th>
+<th>freight_elevators</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>Пасс (4), Груз (1)</td>
+<td>4.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>1</th>
+<td>Пасс (1), Груз (1)</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>Пасс (1)</td>
+<td>1.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>3</th>
+<td>Пасс (1)</td>
+<td>1.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>4</th>
+<td>Пасс (1), Груз (1)</td>
+<td>1.0</td>
+<td>1.0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=d9e3896a">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [206]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"balconies"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"balcony"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Балкон\s*\((\d+)\)"</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span>
+<span class="p">)</span>
+
+<span class="n">df_rub</span><span class="p">[</span><span class="s2">"loggias"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"balcony"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Лоджия\s*\((\d+)\)"</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span>
+<span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">df_rub</span><span class="p">[[</span><span class="s2">"loggias"</span><span class="p">,</span> <span class="s2">"balconies"</span><span class="p">,</span> <span class="s2">"balcony"</span><span class="p">]]</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>loggias</th>
+<th>balconies</th>
+<th>balcony</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>22701</th>
+<td>NaN</td>
+<td>NaN</td>
+<td>unknown</td>
+</tr>
+<tr>
+<th>3600</th>
+<td>1.0</td>
+<td>NaN</td>
+<td>Лоджия (1)</td>
+</tr>
+<tr>
+<th>9456</th>
+<td>NaN</td>
+<td>NaN</td>
+<td>unknown</td>
+</tr>
+<tr>
+<th>21327</th>
+<td>NaN</td>
+<td>NaN</td>
+<td>unknown</td>
+</tr>
+<tr>
+<th>22192</th>
+<td>NaN</td>
+<td>1.0</td>
+<td>Балкон (1)</td>
+</tr>
+<tr>
+<th>14260</th>
+<td>NaN</td>
+<td>1.0</td>
+<td>Балкон (1)</td>
+</tr>
+<tr>
+<th>13904</th>
+<td>1.0</td>
+<td>NaN</td>
+<td>Лоджия (1)</td>
+</tr>
+<tr>
+<th>20521</th>
+<td>1.0</td>
+<td>NaN</td>
+<td>Лоджия (1)</td>
+</tr>
+<tr>
+<th>6371</th>
+<td>NaN</td>
+<td>NaN</td>
+<td>unknown</td>
+</tr>
+<tr>
+<th>15191</th>
+<td>NaN</td>
+<td>NaN</td>
+<td>unknown</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=027d91c7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [202]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"combined_bathrooms"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"bathroom"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Совмещенный\s*\((\d+)\)"</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span>
+<span class="p">)</span>
+
+<span class="n">df_rub</span><span class="p">[</span><span class="s2">"separate_bathrooms"</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"bathroom"</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">extract</span><span class="p">(</span><span class="sa">r</span><span class="s2">"Раздельный\s*\((\d+)\)"</span><span class="p">)[</span><span class="mi">0</span><span class="p">],</span>
+    <span class="n">errors</span><span class="o">=</span><span class="s2">"coerce"</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=b54ed1ed">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [203]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">df_rub</span><span class="p">[</span>
+    <span class="p">[</span>
+        <span class="s2">"rooms"</span><span class="p">,</span>
+        <span class="s2">"room_layout"</span><span class="p">,</span>
+        <span class="s2">"metro_station"</span><span class="p">,</span>
+        <span class="s2">"metro_walk_minutes"</span><span class="p">,</span>
+        <span class="s2">"floor"</span><span class="p">,</span>
+        <span class="s2">"total_floors"</span><span class="p">,</span>
+        <span class="s2">"passenger_elevators"</span><span class="p">,</span>
+        <span class="s2">"freight_elevators"</span><span class="p">,</span>
+        <span class="s2">"balconies"</span><span class="p">,</span>
+        <span class="s2">"loggias"</span><span class="p">,</span>
+        <span class="s2">"combined_bathrooms"</span><span class="p">,</span>
+        <span class="s2">"separate_bathrooms"</span>
+    <span class="p">]</span>
+<span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>rooms</th>
+<th>room_layout</th>
+<th>metro_station</th>
+<th>metro_walk_minutes</th>
+<th>floor</th>
+<th>total_floors</th>
+<th>passenger_elevators</th>
+<th>freight_elevators</th>
+<th>balconies</th>
+<th>loggias</th>
+<th>combined_bathrooms</th>
+<th>separate_bathrooms</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>0</th>
+<td>4.0</td>
+<td>unknown</td>
+<td>Смоленская</td>
+<td>9.0</td>
+<td>5</td>
+<td>16</td>
+<td>4.0</td>
+<td>1.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>1</th>
+<td>4.0</td>
+<td>unknown</td>
+<td>Смоленская</td>
+<td>8.0</td>
+<td>5</td>
+<td>16</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2.0</td>
+<td>1.0</td>
+</tr>
+<tr>
+<th>2</th>
+<td>4.0</td>
+<td>Оба варианта</td>
+<td>Смоленская</td>
+<td>7.0</td>
+<td>5</td>
+<td>16</td>
+<td>1.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>3.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>3</th>
+<td>4.0</td>
+<td>Оба варианта</td>
+<td>Смоленская</td>
+<td>3.0</td>
+<td>5</td>
+<td>6</td>
+<td>1.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>3.0</td>
+<td>NaN</td>
+</tr>
+<tr>
+<th>4</th>
+<td>2.0</td>
+<td>unknown</td>
+<td>Арбатская</td>
+<td>7.0</td>
+<td>12</td>
+<td>26</td>
+<td>1.0</td>
+<td>1.0</td>
+<td>NaN</td>
+<td>NaN</td>
+<td>2.0</td>
+<td>NaN</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=2a6930cd">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [208]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"children_allowed"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"pets_children_allowed"</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"Можно с детьми"</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="p">)</span>
+
+<span class="n">df_rub</span><span class="p">[</span><span class="s2">"pets_allowed"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"pets_children_allowed"</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"Можно с животными"</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=55b9aa52">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [209]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"furniture"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"amenities"</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"Мебель"</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=aa020fe3">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [210]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"washing_machine"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"amenities"</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"Стиральная машина"</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=c889cfac">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [211]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"dishwasher"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"amenities"</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"Посудомоечная машина"</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=a9e0f28e">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [217]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"air_conditioner"</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="s2">"amenities"</span><span class="p">]</span>
+    <span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="s2">"Кондиционер"</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=538fe648">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [218]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span>
+    <span class="n">df_rub</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="mi">5</span><span class="p">)[[</span>
+        <span class="s2">"children_allowed"</span><span class="p">,</span>
+        <span class="s2">"pets_allowed"</span><span class="p">,</span>
+        <span class="s2">"furniture"</span><span class="p">,</span>
+        <span class="s2">"washing_machine"</span><span class="p">,</span>
+        <span class="s2">"air_conditioner"</span><span class="p">,</span>
+        <span class="s2">"dishwasher"</span>
+<span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedHTMLCommon jp-RenderedHTML jp-OutputArea-output" data-mime-type="text/html" tabindex="0">
+<div>
+<style scoped="">
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+<thead>
+<tr style="text-align: right;">
+<th></th>
+<th>children_allowed</th>
+<th>pets_allowed</th>
+<th>furniture</th>
+<th>washing_machine</th>
+<th>air_conditioner</th>
+<th>dishwasher</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<th>11472</th>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>8978</th>
+<td>0</td>
+<td>0</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr>
+<th>15625</th>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>16342</th>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+</tr>
+<tr>
+<th>16685</th>
+<td>1</td>
+<td>0</td>
+<td>1</td>
+<td>1</td>
+<td>1</td>
+<td>0</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=8f5a633d">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [226]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">categorical_columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">"room_layout"</span><span class="p">,</span>
+    <span class="s2">"parking"</span><span class="p">,</span>
+    <span class="s2">"renovation"</span><span class="p">,</span>
+    <span class="s2">"windows"</span><span class="p">,</span>
+    <span class="s2">"garbage_chute"</span><span class="p">,</span>
+    <span class="s2">"property_type"</span><span class="p">,</span>
+    <span class="s2">"currency"</span><span class="p">,</span>
+<span class="p">]</span>
+
+<span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">categorical_columns</span><span class="p">:</span>
+    <span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">codes</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=df43081b">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [ ]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">numeric_columns</span> <span class="o">=</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=410788b0">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [223]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">column</span> <span class="ow">in</span> <span class="n">numeric_columns</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">any</span><span class="p">():</span>
+        <span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="n">df_rub</span><span class="p">[</span><span class="n">column</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=fb199d82">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [224]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Всего пропусков:"</span><span class="p">,</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Всего пропусков: 1314
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=1b72a659">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [228]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[228]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>metro_station    1314
+dtype: int64</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=d235c04f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [234]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="p">[</span><span class="s2">"metro_station"</span><span class="p">]</span> <span class="o">=</span> <span class="n">df_rub</span><span class="p">[</span><span class="s2">"metro_station"</span><span class="p">]</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="s2">"unknown"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=99c9cefc">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [235]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Всего пропусков:"</span><span class="p">,</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Всего пропусков: 0
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=41527499">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [236]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_rub</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"../data_processed/data.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=c2b97d55">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [239]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Размер таблицы:"</span><span class="p">,</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Количество пропусков:"</span><span class="p">,</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df_rub</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+<span class="n">df_rub</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Размер таблицы: (23344, 46)
+Количество пропусков: 0
+['id', 'rooms_original', 'property_type', 'metro', 'address', 'area_original', 'building', 'parking', 'price_original', 'phones', 'description', 'renovation', 'room_area', 'balcony', 'windows', 'bathroom', 'pets_children_allowed', 'amenities', 'residential_complex', 'building_series', 'ceiling_height', 'elevator', 'garbage_chute', 'listing_url', 'currency', 'price', 'total_area', 'price_per_sqm', 'rooms', 'room_layout', 'metro_station', 'metro_walk_minutes', 'floor', 'total_floors', 'passenger_elevators', 'freight_elevators', 'balconies', 'loggias', 'combined_bathrooms', 'separate_bathrooms', 'children_allowed', 'pets_allowed', 'furniture', 'washing_machine', 'dishwasher', 'air_conditioner']
+&lt;class 'pandas.DataFrame'&gt;
+Index: 23344 entries, 0 to 23367
+Data columns (total 46 columns):
+ #   Column                 Non-Null Count  Dtype  
+---  ------                 --------------  -----  
+ 0   id                     23344 non-null  int64  
+ 1   rooms_original         23344 non-null  str    
+ 2   property_type          23344 non-null  int8   
+ 3   metro                  23344 non-null  str    
+ 4   address                23344 non-null  str    
+ 5   area_original          23344 non-null  str    
+ 6   building               23344 non-null  str    
+ 7   parking                23344 non-null  int8   
+ 8   price_original         23344 non-null  str    
+ 9   phones                 23344 non-null  str    
+ 10  description            23344 non-null  str    
+ 11  renovation             23344 non-null  int8   
+ 12  room_area              23344 non-null  str    
+ 13  balcony                23344 non-null  str    
+ 14  windows                23344 non-null  int8   
+ 15  bathroom               23344 non-null  str    
+ 16  pets_children_allowed  23344 non-null  str    
+ 17  amenities              23344 non-null  str    
+ 18  residential_complex    23344 non-null  str    
+ 19  building_series        23344 non-null  str    
+ 20  ceiling_height         23344 non-null  float64
+ 21  elevator               23344 non-null  str    
+ 22  garbage_chute          23344 non-null  int8   
+ 23  listing_url            23344 non-null  str    
+ 24  currency               23344 non-null  int8   
+ 25  price                  23344 non-null  float64
+ 26  total_area             23344 non-null  float64
+ 27  price_per_sqm          23344 non-null  float64
+ 28  rooms                  23344 non-null  float64
+ 29  room_layout            23344 non-null  int8   
+ 30  metro_station          23344 non-null  str    
+ 31  metro_walk_minutes     23344 non-null  float64
+ 32  floor                  23344 non-null  int64  
+ 33  total_floors           23344 non-null  int64  
+ 34  passenger_elevators    23344 non-null  float64
+ 35  freight_elevators      23344 non-null  float64
+ 36  balconies              23344 non-null  float64
+ 37  loggias                23344 non-null  float64
+ 38  combined_bathrooms     23344 non-null  float64
+ 39  separate_bathrooms     23344 non-null  float64
+ 40  children_allowed       23344 non-null  int64  
+ 41  pets_allowed           23344 non-null  int64  
+ 42  furniture              23344 non-null  int64  
+ 43  washing_machine        23344 non-null  int64  
+ 44  dishwasher             23344 non-null  int64  
+ 45  air_conditioner        23344 non-null  int64  
+dtypes: float64(12), int64(9), int8(7), str(18)
+memory usage: 44.9 MB
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=794c355f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [242]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_final</span> <span class="o">=</span> <span class="n">df_rub</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">include</span><span class="o">=</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=e0f54f0f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [243]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_final</span> <span class="o">=</span> <span class="n">df_final</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">subset</span><span class="o">=</span><span class="s2">"id"</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=e9764543">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [244]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Размер таблицы:"</span><span class="p">,</span> <span class="n">df_final</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Дубликаты ID:"</span><span class="p">,</span> <span class="n">df_final</span><span class="p">[</span><span class="s2">"id"</span><span class="p">]</span><span class="o">.</span><span class="n">duplicated</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Пропуски:"</span><span class="p">,</span> <span class="n">df_final</span><span class="o">.</span><span class="n">isna</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">sum</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">"Все столбцы числовые:"</span><span class="p">,</span> <span class="n">df_final</span><span class="o">.</span><span class="n">select_dtypes</span><span class="p">(</span><span class="n">exclude</span><span class="o">=</span><span class="s2">"number"</span><span class="p">)</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>Размер таблицы: (23344, 28)
+Дубликаты ID: 0
+Пропуски: 0
+Все столбцы числовые: True
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=1f82cfde">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [245]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_final</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"../data_processed/final_data.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=9daa50c7">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [246]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_final</span><span class="p">[</span><span class="s2">"price"</span><span class="p">]</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child jp-OutputArea-executeResult">
+<div class="jp-OutputPrompt jp-OutputArea-prompt">Out[246]:</div>
+<div class="jp-RenderedText jp-OutputArea-output jp-OutputArea-executeResult" data-mime-type="text/plain" tabindex="0">
+<pre>count    2.334400e+04
+mean     8.296726e+04
+std      1.227379e+05
+min      1.000000e+04
+25%      3.700000e+04
+50%      4.990000e+04
+75%      7.500000e+04
+max      3.000000e+06
+Name: price, dtype: float64</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell" id="cell-id=53f2b11f">
+<div class="jp-Cell-inputWrapper" tabindex="0">
+<div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
+</div>
+<div class="jp-InputArea jp-Cell-inputArea">
+<div class="jp-InputPrompt jp-InputArea-prompt">In [247]:</div>
+<div class="jp-CodeMirrorEditor jp-Editor jp-InputArea-editor" data-type="inline">
+<div class="cm-editor cm-s-jupyter">
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">df_final</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">tolist</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="jp-Cell-outputWrapper">
+<div class="jp-Collapser jp-OutputCollapser jp-Cell-outputCollapser">
+</div>
+<div class="jp-OutputArea jp-Cell-outputArea">
+<div class="jp-OutputArea-child">
+<div class="jp-OutputPrompt jp-OutputArea-prompt"></div>
+<div class="jp-RenderedText jp-OutputArea-output" data-mime-type="text/plain" tabindex="0">
+<pre>['id', 'property_type', 'parking', 'renovation', 'windows', 'ceiling_height', 'garbage_chute', 'currency', 'price', 'total_area', 'price_per_sqm', 'rooms', 'room_layout', 'metro_walk_minutes', 'floor', 'total_floors', 'passenger_elevators', 'freight_elevators', 'balconies', 'loggias', 'combined_bathrooms', 'separate_bathrooms', 'children_allowed', 'pets_allowed', 'furniture', 'washing_machine', 'dishwasher', 'air_conditioner']
+</pre>
+</div>
+</div>
+</div>
+</div>
+</div><div class="jp-Cell jp-CodeCell jp-Notebook-cell jp-mod-noOutputs" id="cell-id=9f97550b">
 <div class="jp-Cell-inputWrapper" tabindex="0">
 <div class="jp-Collapser jp-InputCollapser jp-Cell-inputCollapser">
 </div>
