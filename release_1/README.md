@@ -1,4 +1,4 @@
-How Much Is The…?
+How Much Is The…? — Release 1
 
 Описание проекта
 
